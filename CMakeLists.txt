@@ -394,8 +394,6 @@ if(CORE_HOST_IS_TARGET)
   endif()
 endif()
 
-//sas
-
 # link wrapper
 if(FFMPEG_LINK_EXECUTABLE)
   set(CMAKE_CXX_LINK_EXECUTABLE "${FFMPEG_LINK_EXECUTABLE}")
