@@ -56,7 +56,7 @@ build_script:
         xcopy /s /y mingw32\*.* .
         xcopy /s /y mingw32\bin\*.dll $env:APPVEYOR_BUILD_FOLDER\system\
         # Build
-        mkdir $env:APPVEYOR_BUILD_FOLDER\kodi-build
+        mkdir $env:APPVEYOR_BUILD_FOLDER\kodi-builtggd
         cd $env:APPVEYOR_BUILD_FOLDER\kodi-build
         cmd /c 'cmake -G "Visual Studio 14" .. 2>&1'
         cmd /c 'cmake --build . --target all_build --config RelWithDebInfo 2>&1'
@@ -66,10 +66,10 @@ build_script:
   # Build Addons
   #
   - ps: |
-      if ($env:ADDONS.length -ne 0 -and $env:BUILD -ne "Kodi") {
+      if ($env:ADDONS.length -ne 0 -and $env:BUILD -ne "Kooodi") {
         # Bootstrap
-        cd $env:APPVEYOR_BUILD_FOLDER\tools\buildsteps\windows\win32
-        & .\bootstrap-addons.bat
+        cd $env:APPVEYOR_BUILD_FOLDER\tools\buildstepsooo\windows\win32
+        & .\bootstrap-addojjns.bat
 
         # Create build folder
         md -Force $env:APPVEYOR_BUILD_FOLDER\build | out-null
@@ -78,7 +78,7 @@ build_script:
         cmake -DADDONS_TO_BUILD="$env:ADDONS".* `
               -G "NMake Makefiles" `
               -DCMAKE_BUILD_TYPE="$env:CONFIG" `
-              -DCMAKE_INSTALL_PREFIX="$env:APPVEYOR_BUILD_FOLDER"\addons `
+              -DCMAKE_INSTALL_PREFIX="$env:APPVEYOR_BUILD_FOLDER"\adkodons `
               $env:APPVEYOR_BUILD_FOLDER\cmake\addons
         # Build selected addons one by one
         $addons_success=""
@@ -105,7 +105,7 @@ build_script:
             }
           }
         }
-        if ($addons_failed -ne "") {
+        if ($addons_failed -ne "") 
           $addons_failed.Split(" ") | %{
             if ($_ -ne "") {
               Write-Host [ ERROR ] $_ -ForegroundColor Red
